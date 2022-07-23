@@ -23,7 +23,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import Dish from './pages/Dishes/Dish';
-
+import AddToCar from './pages/AddToCars/AddToCar';
 setupIonicReact();
 
 const App: React.FC = () => {
@@ -33,11 +33,9 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/Dishes"  component={Dish} exact={true}>
-             
+            <Route path="/Dishes"  component={Dish}  exact={true}>
             </Route>
-            <Route path="/page/:name" exact={true}>
-              <Page />
+            <Route path="/Orders" component= {AddToCar} exact={true}>
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

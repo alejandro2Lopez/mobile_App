@@ -10,18 +10,20 @@ const Dish: React.FC = () => {
     const closeModal = () => {
         setOpen(false);
     }
-    const openModal = (image="", name="", cost=0, description="") => {
+    const openModal = (image="", name="", cost=0, description="", idDish=0) => {
         setOpen(true);
         setImage(image);
         setName(name);
         setCost(cost);
         setDescription(description);
+        setIdDish(idDish);
     }
     const [description, setDescription]= useState("");
     const [cost,setCost]=useState(0);
     const [name, setName] = useState("");
     const [image, setImage] = useState("");
     const [open, setOpen] = useState(false);
+    const [idDish, setIdDish]= useState(0);
     if (!data) {
         return <h1>Cargando...</h1>
     }
@@ -52,14 +54,14 @@ const Dish: React.FC = () => {
                             <IonCardTitle className="Joke_Category"> Cost: {dish?.cost}</IonCardTitle>
                         </IonCardHeader>
                         <IonCardContent>{data?.delivery}</IonCardContent>
-                     <IonButton onClick={() => openModal(dish?.image_url,dish?.name,dish?.cost, dish?.description)} class="center" >Show</IonButton>
+                     <IonButton onClick={() => openModal(dish?.image_url,dish?.name,dish?.cost, dish?.description, dish?.id)} class="center" >Show</IonButton>
                  
                     </IonCard>
 
                 )
             })}
             <IonModal id="example-modal" isOpen={open} onDidDismiss={closeModal}>
-                <Modal_Dish dismiss={closeModal} image={image} description={description} cost={cost} name={name} ></ Modal_Dish >
+                <Modal_Dish dismiss={closeModal} image={image} description={description} cost={cost} name={name} id={idDish}></ Modal_Dish >
             </IonModal>
 
         </IonContent>
