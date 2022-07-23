@@ -1,0 +1,13 @@
+.center{
+    margin-left: 97px;
+    margin-right: 100px;
+    display: small ;
+    --background: rgb(201, 201, 11);
+  }
+  .buttonBuy{
+    margin-left: 97px;
+    margin-right: 100px;
+    display: small ;
+    color: white;
+    --background: rgb(41, 144, 111);
+  }
