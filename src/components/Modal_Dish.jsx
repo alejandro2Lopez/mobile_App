@@ -21,6 +21,7 @@ export const Modal_Dish = ({ dismiss, image, name, cost, description, id }) => {
     const AddTocar = (dish_id = 0) => {
         try {
             refetch({ client_id: 1, dish_id: dish_id });
+           sessionStorage.setItem("Nombre","Alejandro")
             presentAlert({
                 header: 'Alert',
                 subHeader: 'Important message',
