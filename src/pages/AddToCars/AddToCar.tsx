@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { IonPage, IonMenuButton, IonHeader, IonItem, IonButtons, IonImg, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonContent, IonButton, IonTitle, IonModal, IonCol } from '@ionic/react';
+import { IonAlert, IonPage, IonMenuButton, IonHeader, IonItem, IonButtons, IonImg, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonContent, IonButton, IonTitle, IonModal, IonCol } from '@ionic/react';
 import UseApi from "../../components/api/Api";
 import './AddToCar.css'
+
+
 const AddToCar: React.FC = () => {
   const { data, delet, refetch } = UseApi(`${process.env.REACT_APP_API_URL}/api/order_details`);
   const [costt, setCost] = useState(0);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     var a = 0;
@@ -24,8 +27,8 @@ const AddToCar: React.FC = () => {
   }
   const confirmar = () => {
     try {
+      setShowAlert(true);
       refetch({ client_id: sessionStorage.getItem("Id"), isConfirm: 1, cost: costt });
-
     } catch (err) {
       console.log(err)
     }
@@ -75,6 +78,18 @@ const AddToCar: React.FC = () => {
               <IonButton type="submit" class="buttonBuy" >Confimar</IonButton>
             </form>
           </IonItem>
+        </IonContent>
+
+        <IonContent>
+
+          <IonAlert
+            isOpen={showAlert}
+            onDidDismiss={() => setShowAlert(false)}
+            header="Listo!"
+            message="Se ha confirmado la compra"
+            buttons={['OK']}
+          />
+
         </IonContent>
 
       </IonContent>

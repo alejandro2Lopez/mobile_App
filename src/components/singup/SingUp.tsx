@@ -6,7 +6,8 @@ import {
     IonInput,
     IonPage,
     IonAlert,
-    IonContent
+    IonContent,
+    useIonAlert
 } from "@ionic/react";
 import UseApi from "../api/Api";
 import { useHistory } from "react-router-dom";
@@ -19,6 +20,7 @@ const Again = () => {
     const [showAlert, setShowAlert] = useState(false);
     const [showAlert1, setShowAlert1] = useState(false);
     const [showAlert2, setShowAlert2] = useState(false);
+    const [presentAlert] = useIonAlert();
 
     const history = useHistory();
     const handleLoginButtonPress = () => {
@@ -35,20 +37,27 @@ const Again = () => {
 
                 if (client.email === email && client.password === password) {
                     if (client.block === "enable") {
+                        presentAlert({
+                            header: 'Alert',
+                            subHeader: 'Listo!',
+                            message: 'Se ha registrado de manera exitosa',
+                            buttons: ['OK'],
+                        })
                         setShowAlert1(false);
-                        setShowAlert2(false);
-                        setShowAlert(true);
                         sessionStorage.setItem("Id", client.id)
+                        sessionStorage.setItem("Email", client.email)
                         handleLoginButtonPress();
                     } else {
-                        setShowAlert2(true);
-                        setShowAlert1(false);
-                        setShowAlert(false);
+                        presentAlert({
+                            header: 'Alert',
+                            subHeader: 'Error',
+                            message: 'El usuario se encuentra bloqueado',
+                            buttons: ['OK'],
+                        })
                     }
                 } else {
 
                     setShowAlert1(true);
-                    setShowAlert(false);
                     setShowAlert2(false);
                 }
             })
@@ -60,7 +69,7 @@ const Again = () => {
             <IonCard>
                 <br />
                 <form>
-                    <IonCardSubtitle> Insertar</IonCardSubtitle>
+                    <IonCardSubtitle color={"dark"} > Insertar</IonCardSubtitle>
                     <p>-------------------------------------------------------------------------</p>
                     <IonInput
                         type="text"
@@ -81,7 +90,7 @@ const Again = () => {
                     />
                     <p>-------------------------------------------------------------------------</p>
 
-                    <IonButton onClick={() => Validate()} >Ingresar</IonButton>
+                    <IonButton onClick={() => Validate()} strong >Ingresar</IonButton>
                 </form>
 
                 <IonContent>

@@ -20,14 +20,9 @@ function UseApi(url: any) {
         axios
             .get(url, config)
             .then((response) => { setData(response.data); })
-            .then((response)=> {})
+            .then((response) => { })
             .catch((err) => { setError(err); })
             .finally(() => { setLoading(false); });
-
-            setTimeout(() => {
-
-              }, 1000);
-
     }, [url]);
 
     const refetch = (body: any) => {
@@ -39,7 +34,8 @@ function UseApi(url: any) {
         }
         setLoading(true);
 
-        axios.post(url, body)
+        axios
+            .post(url, body)
             .then((response) => { setData(response.data) })
             .catch((err) => { setError(err); })
             .finally(() => { setLoading(false); });
@@ -58,7 +54,7 @@ function UseApi(url: any) {
         setLoading(true);
         axios
             .post(url, data, config)
-            .then((response) => {sessionStorage.setItem("Id", response.data.client.id)})
+            .then((response) => { sessionStorage.setItem("Id", response.data.client.id) })
             .catch((err) => { setError(err); })
             .finally(() => { setLoading(false); });
 
@@ -78,12 +74,6 @@ function UseApi(url: any) {
         axios
             .put(`${url}/${id}`, data, config)
             .then((response) => { })
-            .catch((err) => { setError(err); })
-            .finally(() => { setLoading(false); });
-
-        axios
-            .get(url, config)
-            .then((response) => { setData(response.data); })
             .catch((err) => { setError(err); })
             .finally(() => { setLoading(false); });
     };
