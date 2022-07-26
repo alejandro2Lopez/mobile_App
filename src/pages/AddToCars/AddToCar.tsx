@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { IonPage, IonMenuButton, IonHeader, IonItem, IonButtons, IonImg, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonContent, IonButton, IonTitle, IonModal, IonCol } from '@ionic/react';
-import UseApi from "../../components/UseApi";
+import UseApi from "../../components/api/Api";
 import './AddToCar.css'
 const AddToCar: React.FC = () => {
   const { data, delet, refetch } = UseApi(`${process.env.REACT_APP_API_URL}/api/order_details`);
@@ -24,7 +24,7 @@ const AddToCar: React.FC = () => {
   }
   const confirmar = () => {
     try {
-      refetch({ client_id: 1, isConfirm: 1, cost:costt});
+      refetch({ client_id: sessionStorage.getItem("Id"), isConfirm: 1, cost: costt });
 
     } catch (err) {
       console.log(err)

@@ -7,11 +7,11 @@ import {
   IonListHeader,
   IonMenu,
   IonMenuToggle,
-  IonNote,
+  IonNote
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import {  cart, heartOutline,  paperPlaneOutline, person, pizza} from 'ionicons/icons';
+import { cart, heartOutline, paperPlaneOutline, person, pizza } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -24,9 +24,9 @@ interface AppPage {
 const appPages: AppPage[] = [
   {
     title: 'User information',
-    url: '/page/Inbox',
+    url: '/Principal',
     iosIcon: "fa-solid fa-user-pen",
-    mdIcon:  person
+    mdIcon: person
   },
   {
     title: 'Orders',
@@ -35,7 +35,7 @@ const appPages: AppPage[] = [
     mdIcon: cart
   },
   {
-    title: 'Menu',
+    title: 'Platillos',
     url: '/Dishes',
     iosIcon: heartOutline,
     mdIcon: pizza
@@ -64,7 +64,7 @@ const Menu: React.FC = () => {
           })}
         </IonList>
 
-    
+
       </IonContent>
     </IonMenu>
   );

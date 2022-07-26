@@ -1,6 +1,6 @@
 import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router';
 import Menu from './components/Menu';
 import Page from './pages/Page';
 
@@ -24,6 +24,11 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Dish from './pages/Dishes/Dish';
 import AddToCar from './pages/AddToCars/AddToCar';
+import Home from './pages/home/Home';
+import Principal from './pages/principal/Principal'
+import FirstTime from './components/login/LogIn'
+import Again from './components/singup/SingUp'
+
 setupIonicReact();
 
 const App: React.FC = () => {
@@ -33,10 +38,19 @@ const App: React.FC = () => {
         <IonSplitPane contentId="main">
           <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/Dishes"  component={Dish}  exact={true}>
+            <Route path="/" exact={true}>
+              <Redirect to="/Home" />
             </Route>
-            <Route path="/Orders" component= {AddToCar} exact={true}>
-            </Route>
+
+            <Route path="/Dishes" component={Dish} exact={true}></Route>
+            <Route path="/home" component={Home} exact={true}></Route>
+            <Route path="/principal" component={Principal} exact={true}></Route>
+            <Route path="/login" component={FirstTime} ></Route>
+            <Route path="/singup" component={Again} exact={true} ></Route>
+            <Route path="/Orders" component={AddToCar} exact={true}></Route>
+            {/* <Route path="/page/:name" exact={true}>
+              <Page />
+            </Route> */}
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
