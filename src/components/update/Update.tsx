@@ -37,8 +37,10 @@ const Renew = ({ method }: any) => {
             setAdress("");
             setEmail("");
             setPassword("");
+            setShowAlert(true);
         } catch (error) {
             console.log(error)
+            setShowAlert1(true);
         }
 
 
@@ -49,7 +51,7 @@ const Renew = ({ method }: any) => {
         <IonCard>
             <br />
             <form onSubmit={() => Validate()}>
-                <IonCardSubtitle> Actualizar datos</IonCardSubtitle>
+                <IonCardSubtitle color={"dark"}> Actualizar datos</IonCardSubtitle>
                 <p>-------------------------------------------------------------------------</p>
                 <IonInput
                     type="text"
@@ -104,7 +106,7 @@ const Renew = ({ method }: any) => {
                     isOpen={showAlert}
                     onDidDismiss={() => setShowAlert(false)}
                     header="Listo!"
-                    message="Ha ingresado correctamente"
+                    message="Ha actualizado correctamente"
                     buttons={['OK']}
                 />
 
@@ -112,7 +114,7 @@ const Renew = ({ method }: any) => {
                     isOpen={showAlert1}
                     onDidDismiss={() => setShowAlert1(false)}
                     header="Error!"
-                    message="Su usuario y contraseña no es correcto"
+                    message="Algo ha salido mal"
                     buttons={['OK']}
                 />
 

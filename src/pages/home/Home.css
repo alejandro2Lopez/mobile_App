@@ -1,0 +1,12 @@
+.center{
+    margin-left: 30px;
+    margin-right: 30px;
+    display: large ;
+    --background: rgb(201, 201, 11);
+    color:darkcyan
+  }
+
+.title{
+    margin-left: 140px;
+    margin-right: 100px;
+}

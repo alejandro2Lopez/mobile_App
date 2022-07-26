@@ -47,7 +47,6 @@ const FirstTime = ({ method }: any) => {
             setName("");
             setLastName("");
             setAdress("");
-            // setEmail("");
             setPassword("");
             sessionStorage.setItem("Email", email)
            

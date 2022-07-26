@@ -20,13 +20,14 @@ export const Modal_Dish = ({ dismiss, image, name, cost, description, id }) => {
     const { refetch } = UseApi(`${process.env.REACT_APP_API_URL}/api/order_details`);
     const AddTocar = (dish_id = 0) => {
         try {
-            refetch({ client_id: sessionStorage.getItem("Id"), dish_id: dish_id });
             presentAlert({
                 header: 'Alert',
                 subHeader: 'Important message',
                 message: 'Se ha agregado de manera exitosa',
                 buttons: ['OK'],
             })
+            refetch({ client_id: sessionStorage.getItem("Id"), dish_id: dish_id });
+
         } catch (err) {
             console.log(err)
         }

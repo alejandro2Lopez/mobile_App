@@ -48,9 +48,6 @@ const App: React.FC = () => {
             <Route path="/login" component={FirstTime} ></Route>
             <Route path="/singup" component={Again} exact={true} ></Route>
             <Route path="/Orders" component={AddToCar} exact={true}></Route>
-            {/* <Route path="/page/:name" exact={true}>
-              <Page />
-            </Route> */}
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
